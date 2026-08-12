@@ -1,15 +1,18 @@
 C# ORM / Data Access Library — Minimal Architecture
 
 USER
-  -> Data Access Dashboard (frontend_csharp)
-  -> Data Access API (backend_csharp)
+  -> Data Access Dashboard UI (browser)
+       - backend serves C# HTML at http://localhost:5084/  (and /ui)
+       - optional frontend HttpListener UI at http://localhost:5085/
+  -> Data Access API (backend_csharp JSON: /health /version /orm/*)
   -> DataAccessService
   -> UnitOfWorkManager / ApplicationDbContext
   -> PartitionRouter
   -> StoreNode (1..N in-process)
   -> InMemoryStore (persistence/)
   -> ReplicationManager (distribution/)
-  -> Response -> Frontend
+  -> Response -> Frontend / Browser
 
+Dashboard HTML is generated with C# BCL only (no JS SPA).
 CleanArchitecture concepts (Domain/Application/Infrastructure) are conceptual only.
 .NET Framework 4.8 pairs use net48 TFM; customer/branch text always says 4.8.
