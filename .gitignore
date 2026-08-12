@@ -8,3 +8,5 @@ build-report.txt
 build-run.log
 *.user
 *.slnx
+
+__pycache__/
