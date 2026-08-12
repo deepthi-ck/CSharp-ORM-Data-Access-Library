@@ -7,10 +7,30 @@ Conceptual inspiration: [jasontaylordev/CleanArchitecture](https://github.com/ja
 ## Quick start
 
 ```bash
+# Full quality gate (optional)
 python build.py
+
+# Run API + browser UI (C# only — no Python required to view UI)
+dotnet run --project backend_csharp/backend_csharp.csproj -c Release
 ```
 
-API: `http://localhost:5084`
+Open the dashboard in a browser: **http://localhost:5084/**  
+(also `/ui`, health at `/health`)
+
+Optional frontend UI host (proxies API with C# `HttpClient` + `HttpListener`):
+
+```bash
+# terminal 1 — API
+dotnet run --project backend_csharp/backend_csharp.csproj -c Release
+
+# terminal 2 — UI on :5085
+dotnet run --project frontend_csharp/frontend_csharp.csproj -c Release
+```
+
+Then open **http://localhost:5085/**
+
+API JSON: `http://localhost:5084`  
+Dashboard HTML is generated with C# BCL only (`StringBuilder`, `WebUtility`, `JsonSerializer`, `HttpListener` / ASP.NET).
 
 ## Branch model
 
