@@ -57,8 +57,10 @@ static class ModernHost
                 .AddConsoleExporter());
         var app = builder.Build();
         app.UseCors();
+        DashboardUi.Map(app, service, version);
         DataAccessApi.Map(app, service, version);
         Console.WriteLine("ORM Data Access API listening on " + cfg.ApiBaseUrl);
+        Console.WriteLine("ORM Dashboard UI: " + cfg.ApiBaseUrl.TrimEnd('/') + "/");
         await app.RunAsync();
     }
 }
@@ -74,6 +76,7 @@ static class FrameworkHost
         listener.Prefixes.Add(url);
         listener.Start();
         Console.WriteLine("ORM Data Access API (net48 HttpListener) listening on " + url);
+        Console.WriteLine("ORM Dashboard UI: " + url);
         while (true)
         {
             var ctx = await listener.GetContextAsync();
@@ -85,6 +88,9 @@ static class FrameworkHost
     {
         try
         {
+            if (DashboardUi.TryHandleFramework(ctx, service, version))
+                return;
+
             var path = ctx.Request.Url?.AbsolutePath ?? "/";
             var method = ctx.Request.HttpMethod?.ToUpperInvariant() ?? "GET";
             object payload;
