@@ -1,0 +1,6 @@
+rules:
+  - id: csharp-empty-catch
+    languages: [csharp]
+    message: Empty catch block in C# ORM code
+    severity: WARNING
+    pattern: catch ($EX) { }

@@ -1,0 +1,5 @@
+{
+  "service": "orm-data-access-backend",
+  "exporters": ["console"],
+  "required_hooks": ["AddOpenTelemetry", "AddAspNetCoreInstrumentation"]
+}

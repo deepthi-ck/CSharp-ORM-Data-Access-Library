@@ -1,0 +1,10 @@
+{
+  "stryker-config": {
+    "project": "backend_csharp/backend_csharp.csproj",
+    "test-projects": ["backend_csharp/tests/tests.csproj"],
+    "reporters": ["json", "progress"],
+    "threshold-high": 80,
+    "threshold-low": 50,
+    "threshold-break": 0
+  }
+}

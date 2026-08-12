@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.dotnet/
+quality/reports/**/*
+!quality/reports/**/.gitkeep
+build-report.txt
+build-run.log
+*.user
+*.slnx

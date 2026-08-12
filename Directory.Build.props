@@ -1,0 +1,25 @@
+<Project>
+  <PropertyGroup>
+    <!-- Branch: CSharp_FE6_BE8 — FE=.NET 6, BE=.NET 8. Do not swap or equalize. -->
+    <FrontendTargetFramework>net6.0</FrontendTargetFramework>
+    <BackendTargetFramework>net8.0</BackendTargetFramework>
+    <FrontendDotnetVersion>6</FrontendDotnetVersion>
+    <BackendDotnetVersion>8</BackendDotnetVersion>
+    <BranchName>CSharp_FE6_BE8</BranchName>
+    <SharedTargetFrameworks>net6.0;net8.0</SharedTargetFrameworks>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)' == 'net48'">
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>annotations</Nullable>
+  </PropertyGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net48'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies.net48" Version="1.0.3" PrivateAssets="All" />
+    <PackageReference Include="System.Text.Json" Version="8.0.5" />
+    <PackageReference Include="System.Net.Http.Json" Version="8.0.1" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+</Project>
+

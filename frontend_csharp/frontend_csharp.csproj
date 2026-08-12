@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(FrontendTargetFramework)</TargetFramework>
+    <RootNamespace>OrmDataAccess.Frontend</RootNamespace>
+    <AssemblyName>frontend_csharp</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <DefaultItemExcludes>$(DefaultItemExcludes);tests\**</DefaultItemExcludes>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+  </ItemGroup>
+  <ItemGroup><ProjectReference Include="..\shared\shared.csproj" /></ItemGroup>
+</Project>

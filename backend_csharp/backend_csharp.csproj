@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>$(BackendTargetFramework)</TargetFramework>
+    <RootNamespace>OrmDataAccess.Backend</RootNamespace>
+    <AssemblyName>backend_csharp</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="src\**\*.cs" />
+    <Compile Include="..\persistence\**\*.cs" Link="persistence\%(Filename)%(Extension)" />
+    <Compile Include="..\distribution\**\*.cs" Link="distribution\%(Filename)%(Extension)" />
+  </ItemGroup>
+  <ItemGroup><ProjectReference Include="..\shared\shared.csproj" /></ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' != 'net48'">
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.9.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.Console" Version="1.9.0" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.9.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\config\appsettings.json" Link="appsettings.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\data\sample-orm-data.json" Link="data\sample-orm-data.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

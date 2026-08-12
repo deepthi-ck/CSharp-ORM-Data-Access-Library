@@ -1,0 +1,5 @@
+[
+  { "key": "user:1001", "value": "Visvantha", "kind": "user" },
+  { "key": "product:2001", "value": "widget", "kind": "product" },
+  { "key": "order:3001", "value": "pending", "kind": "order" }
+]
